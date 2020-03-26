@@ -1,6 +1,6 @@
 {
   "name": "autopilot-node-client",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Autopilot Manhattan API",
   "main": "index.js",
   "directories": {
