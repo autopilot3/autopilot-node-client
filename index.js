@@ -13,11 +13,11 @@ module.exports = (conf) => {
     conf.autopilotAPIURL = 'https://api.ap3api.com';
   }
 
-  const apRequest = (url, json, cb) => {
+  const apRequest = (options, cb) => {
     const options = {
       timeout: 5000,
-      method: 'POST',
-      url: `${conf.autopilotAPIURL}/${conf.autopilotInstanceID}${url}`,
+      method: options.method,
+      url: `${conf.autopilotAPIURL}/${conf.autopilotInstanceID}${options.path}`,
       headers: {  
         'X-Api-Key': conf.autopilotAPIKey
       },
