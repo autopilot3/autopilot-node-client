@@ -5,8 +5,8 @@ module.exports = (conf) => {
     console.error("No autopilotAPIKey in config passed to autopilot-node-client");
     process.exit(1);
   }
-  if (!conf.instanceID) {
-    console.error("No instanceID in config passed to autopilot-node-client");
+  if (!conf.autopilotInstanceID) {
+    console.error("No autopilotInstanceID in config passed to autopilot-node-client");
     process.exit(1);
   }
   if (!conf.autopilotAPIURL) {
@@ -17,7 +17,7 @@ module.exports = (conf) => {
     const options = {
       timeout: 5000,
       method: 'POST',
-      url: `${conf.autopilotAPIURL}/${conf.instanceID}${url}`,
+      url: `${conf.autopilotAPIURL}/${conf.autopilotInstanceID}${url}`,
       headers: {  
         'X-Api-Key': conf.autopilotAPIKey
       },
@@ -32,12 +32,8 @@ module.exports = (conf) => {
     });
   };
   
-
   return {
-    addActivities: (activities, cb) => {
-
-
-
+    addActivity: (activityID, attributes, cb) => {
       apRequest({
         method: 'POST',
         path: '/activities/create?async=true',
@@ -48,9 +44,7 @@ module.exports = (conf) => {
             "attributes": attributes
           }
         ]
-      })
-
-
+      }, cb);
+    }
   };
 };
-
