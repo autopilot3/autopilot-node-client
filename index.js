@@ -21,7 +21,7 @@ module.exports = (conf) => {
       headers: {  
         'X-Api-Key': conf.autopilotAPIKey
       },
-      json
+      json: req.json
     };
     request(options, function (err, res, body) {
       if (err) return cb(err);
